@@ -7,5 +7,5 @@ output "thing" {
 }
 
 output "thing2" {
-    value = main.output.thing
+  value = module.main.thing
 }
