@@ -1,0 +1,40 @@
+2019/10/04 19:49:28 [INFO] Terraform version: 0.12.9  
+2019/10/04 19:49:28 [INFO] Go runtime version: go1.13
+2019/10/04 19:49:28 [INFO] CLI args: []string{"/usr/local/bin/terraform", "init", "--from-module=../module-with-submodule-example"}
+2019/10/04 19:49:28 [DEBUG] Attempting to open CLI config file: /Users/tamsky/.terraformrc
+2019/10/04 19:49:28 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2019/10/04 19:49:28 [INFO] CLI command args: []string{"init", "--from-module=../module-with-submodule-example"}
+2019/10/04 19:49:28 [DEBUG] installing modules in .terraform/init-from-module to initialize working directory from "../module-with-submodule-example"
+2019/10/04 19:49:28 [TRACE] -from-module relative path rewritten to absolute path /private/tmp/module-with-submodule-example
+2019/10/04 19:49:28 [DEBUG] Module installer: begin root
+2019/10/04 19:49:28 [TRACE] ModuleInstaller: cleaning directory .terraform/init-from-module/root prior to install of root
+2019/10/04 19:49:28 [TRACE] ModuleInstaller: root address "/private/tmp/module-with-submodule-example" will be handled by go-getter
+2019/10/04 19:49:28 [DEBUG] will download "/private/tmp/module-with-submodule-example" to .terraform/init-from-module/root
+2019/10/04 19:49:28 [TRACE] go-getter detectors rewrote "/private/tmp/module-with-submodule-example" to "file:///private/tmp/module-with-submodule-example"
+2019/10/04 19:49:28 [TRACE] fetching "file:///private/tmp/module-with-submodule-example" to ".terraform/init-from-module/root"
+2019/10/04 19:49:28 [TRACE] ModuleInstaller: root "/private/tmp/module-with-submodule-example" was downloaded to .terraform/init-from-module/root
+2019/10/04 19:49:28 [DEBUG] Module installer: root installed at .terraform/init-from-module/root
+2019/10/04 19:49:28 [DEBUG] Module installer: begin root.main
+2019/10/04 19:49:28 [TRACE] ModuleInstaller: cleaning directory .terraform/init-from-module/root.main prior to install of root.main
+2019/10/04 19:49:28 [TRACE] ModuleInstaller: root.main has local path "./submodule"
+2019/10/04 19:49:28 [TRACE] ModuleInstaller: root.main uses directory from parent: .terraform/init-from-module/root/submodule
+2019/10/04 19:49:28 [DEBUG] Module installer: root.main installed at /private/tmp/module-with-submodule-example/submodule
+2019/10/04 19:49:28 [TRACE] modsdir: writing modules manifest to .terraform/init-from-module/modules.json
+2019/10/04 19:49:28 [TRACE] copying new root module from .terraform/init-from-module/root to .
+panic: Rel: can't make /private/tmp/module-with-submodule-example/submodule relative to 
+
+goroutine 1 [running]:
+github.com/hashicorp/terraform/internal/initwd.DirFromModule(0x2957c2d, 0x1, 0xc0000d6560, 0x12, 0x7ffeefbfeff4, 0x20, 0xc000084b80, 0x2d81940, 0xc00000c7e0, 0x18, ...)
+	/private/tmp/terraform-20190917-90047-18ajf1n/terraform-0.12.9/src/github.com/hashicorp/terraform/internal/initwd/from_module.go:269 +0x3577
+github.com/hashicorp/terraform/command.(*Meta).initDirFromModule(0xc000123880, 0x2957c2d, 0x1, 0x7ffeefbfeff4, 0x20, 0x2d81940, 0xc00000c7e0, 0x1, 0x0, 0x0)
+	/private/tmp/terraform-20190917-90047-18ajf1n/terraform-0.12.9/src/github.com/hashicorp/terraform/command/meta_config.go:252 +0x196
+github.com/hashicorp/terraform/command.(*InitCommand).Run(0xc000123880, 0xc0000cc050, 0x1, 0x1, 0xc0002a47f0)
+	/private/tmp/terraform-20190917-90047-18ajf1n/terraform-0.12.9/src/github.com/hashicorp/terraform/command/init.go:148 +0x28aa
+github.com/mitchellh/cli.(*CLI).Run(0xc00049a140, 0xc00049a140, 0xc000533cc0, 0x1)
+	/private/tmp/terraform-20190917-90047-18ajf1n/terraform-0.12.9/pkg/mod/github.com/mitchellh/cli@v1.0.0/cli.go:255 +0x1da
+main.wrappedMain(0x0)
+	/private/tmp/terraform-20190917-90047-18ajf1n/terraform-0.12.9/src/github.com/hashicorp/terraform/main.go:235 +0xb7c
+main.realMain(0x0)
+	/private/tmp/terraform-20190917-90047-18ajf1n/terraform-0.12.9/src/github.com/hashicorp/terraform/main.go:100 +0xb4
+main.main()
+	/private/tmp/terraform-20190917-90047-18ajf1n/terraform-0.12.9/src/github.com/hashicorp/terraform/main.go:36 +0x3a
